@@ -19,4 +19,20 @@ describe 'journald' do
       is_expected.not_to contain_service('systemd-journald')
     end
   end
+
+  context 'journald settings' do
+    let :pre_condition do
+      'class {"journald":
+         options => {"Storage" => "auto"},
+       }'
+    end
+
+    it do
+      is_expected.to contain_ini_setting('/etc/systemd/journald.conf [Journal] Storage').with(
+        ensure: 'present', section: 'Journal',
+        setting: 'Storage', value: 'auto',
+        path: '/etc/systemd/journald.conf'
+      )
+    end
+  end
 end

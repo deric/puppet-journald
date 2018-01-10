@@ -34,17 +34,22 @@ class journald (
   $conf_file      = $::journald::params::conf_file,
   $log_dir        = $::journald::params::log_dir,
   $manage_service = $::journald::params::manage_service,
+  $service_name   = $::journald::params::service_name,
   $options        = {},
 ) inherits ::journald::params {
 
-  $defaults = {
-    'path' => $conf_file,
-    'notify' => Service['systemd-journald'],
-  }
-
   if $manage_service {
-    service { 'systemd-journald':
+    service { $service_name:
       ensure    => 'running',
+    }
+
+    $defaults = {
+      'path' => $conf_file,
+      'notify' => Service[$service_name],
+    }
+  } else {
+    $defaults = {
+      'path' => $conf_file,
     }
   }
 

@@ -1,0 +1,25 @@
+---
+bundler_args: --without development
+sudo: false
+language: ruby
+before_install: rm Gemfile.lock || true
+addons:
+  apt:
+    packages:
+      # required for unf_ext gem
+      - build-essential
+cache:
+  - bundler
+  - directories:
+    - $HOME/librarian-puppet
+script:
+  - RAKE_ENV=ci bundle exec rake validate
+  - RAKE_ENV=ci bundle exec rake spec
+# disable lint. doesn't give any error and fails with exit 1
+#  - RAKE_ENV=ci bundle exec rake lint
+rvm:
+  - 2.3.3
+env:
+  - PUPPET_VERSION="~> 4.0" STRICT_VARIABLES=yes PARALLEL_TEST_PROCESSORS=2
+  - PUPPET_VERSION="~> 5.0" STRICT_VARIABLES=yes PARALLEL_TEST_PROCESSORS=2
+

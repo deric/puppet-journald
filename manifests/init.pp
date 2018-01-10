@@ -31,11 +31,11 @@
 # Copyright 2018 Tomas Barton.
 #
 class journald (
-  $conf_file      = $::journald::params::conf_file,
-  $log_dir        = $::journald::params::log_dir,
-  $manage_service = $::journald::params::manage_service,
-  $service_name   = $::journald::params::service_name,
-  $options        = {},
+  String $conf_file      = $::journald::params::conf_file,
+  String $log_dir        = $::journald::params::log_dir,
+  Boolean $manage_service = $::journald::params::manage_service,
+  String $service_name   = $::journald::params::service_name,
+  Hash $options        = {},
 ) inherits ::journald::params {
 
   if $manage_service {

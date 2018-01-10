@@ -10,7 +10,7 @@
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",
-      "version_requirement": ">= 1.0.0"
+      "version_requirement": ">= 2.3.3 < 5.0.0"
     },
     {
       "name": "puppetlabs-inifile",
@@ -18,7 +18,7 @@
     }
   ],
   "data_provider": null,
-    "operatingsystem_support": [
+  "operatingsystem_support": [
     {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
@@ -51,6 +51,12 @@
         "6",
         "7"
       ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 4.0.0 < 6.0.0"
     }
   ]
 }

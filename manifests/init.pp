@@ -1,7 +1,7 @@
 # Class: journald
 # ===========================
 #
-# Full description of class journald here.
+# Manages journald configuration
 #
 # Parameters
 # ----------
@@ -29,20 +29,45 @@
 #
 # @example
 #    class { 'journald':
-#      servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
+#      options => {'Storage' => 'auto'},
 #    }
 #
 # Authors
 # -------
 #
-# Author Name <author@domain.com>
+# Tomas Barton <barton.tomas@gmail.com>
 #
 # Copyright
 # ---------
 #
-# Copyright 2018 Your name here, unless otherwise noted.
+# Copyright 2018 Tomas Barton.
 #
-class journald {
+class journald (
+  $conf_file      = $::journald::params::conf_file,
+  $log_dir        = $::journald::params::log_dir,
+  $manage_service = $::journald::params::manage_service,
+  $options        = {}
+) inherits ::journald::params {
 
+  $defaults = {
+    'path' => $conf_file
+  }
+
+  if $manage_service {
+    service { 'systemd-journald':
+      ensure    => 'running',
+      subscribe => $conf_file,
+    }
+  }
+
+  if $options {
+    create_ini_settings({ 'Journal' => $options }, $defaults)
+    if $options['Storage'] == 'volatile' {
+      file { $log_dir:
+        ensure => absent,
+        force  => true,
+      }
+    }
+  }
 
 }

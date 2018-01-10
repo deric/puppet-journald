@@ -1,5 +1,9 @@
 # puppet-journald
 
+[![Puppet
+Forge](http://img.shields.io/puppetforge/v/deric/journald.svg)](https://forge.puppetlabs.com/deric/journald) [![Build Status](https://travis-ci.org/deric/puppet-journald.png?branch=master)](https://travis-ci.org/deric/puppet-journald) [![Puppet Forge
+Downloads](http://img.shields.io/puppetforge/dt/deric/journald.svg)](https://forge.puppetlabs.com/deric/journald/scores)
+
 Module for managing journald configuration.
 
 ```puppet

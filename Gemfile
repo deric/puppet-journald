@@ -12,6 +12,12 @@ gem 'simplecov'
 gem 'simplecov-console'
 gem 'rspec-puppet-facts'
 
+group :development do
+  gem 'travis'
+  gem 'travis-lint'
+  gem 'puppet-blacksmith'
+end
+
 # rspec must be v2 for ruby 1.8.7
 if RUBY_VERSION >= '1.8.7' && RUBY_VERSION < '1.9'
   gem 'rspec', '~> 2.0'

@@ -7,6 +7,13 @@ if RUBY_VERSION >= '1.9'
   RuboCop::RakeTask.new
 end
 
+# These gems aren't always present, for instance
+# on Travis with --without development
+begin
+  require 'puppet_blacksmith/rake_tasks'
+rescue LoadError # rubocop:disable Lint/HandleExceptions
+end
+
 PuppetLint.configuration.send('disable_80chars')
 PuppetLint.configuration.relative = true
 PuppetLint.configuration.ignore_paths = ['spec/**/*.pp', 'pkg/**/*.pp']

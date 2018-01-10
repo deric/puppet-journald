@@ -1,6 +1,6 @@
 {
   "name": "deric-journald",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "deric",
   "summary": "Systemd journal management",
   "license": "Apache-2.0",
@@ -60,4 +60,3 @@
     }
   ]
 }
-

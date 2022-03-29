@@ -1,6 +1,6 @@
 {
   "name": "deric-journald",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "author": "deric",
   "summary": "Systemd journal management",
   "license": "Apache-2.0",
@@ -10,7 +10,7 @@
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",
-      "version_requirement": ">= 2.3.3 < 5.0.0"
+      "version_requirement": ">= 2.3.3 < 9.0.0"
     },
     {
       "name": "puppetlabs-inifile",
@@ -21,27 +21,27 @@
     {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
-        "6",
-        "7",
-        "8",
-        "9"
+        "9",
+        "10",
+        "11"
       ]
     },
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
-        "10.04",
         "12.04",
         "14.04",
-        "16.04"
+        "16.04",
+        "18.04",
+        "20.04"
       ]
     },
     {
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
-        "5",
         "6",
-        "7"
+        "7",
+        "8"
       ]
     },
     {
@@ -55,7 +55,7 @@
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">= 4.0.0 < 6.0.0"
+      "version_requirement": ">= 4.0.0 < 8.0.0"
     }
   ],
   "pdk-version": "2.4.0",

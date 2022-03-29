@@ -31,12 +31,12 @@
 # Copyright 2018 Tomas Barton.
 #
 class journald (
-  String $conf_file      = $::journald::params::conf_file,
-  String $log_dir        = $::journald::params::log_dir,
-  Boolean $manage_service = $::journald::params::manage_service,
-  String $service_name   = $::journald::params::service_name,
-  Hash $options        = {},
-) inherits ::journald::params {
+  String  $conf_file      = '/etc/systemd/journald.conf',
+  String  $log_dir        = '/var/log/journal',
+  Boolean $manage_service = true,
+  String  $service_name   = 'systemd-journald',
+  Hash    $options        = {},
+) {
 
   if $manage_service {
     service { $service_name:

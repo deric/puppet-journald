@@ -54,7 +54,7 @@ class journald (
   }
 
   if $options {
-    create_ini_settings({ 'Journal' => $options }, $defaults)
+    inifile::create_ini_settings({ 'Journal' => $options }, $defaults)
     if $options['Storage'] == 'volatile' {
       file { $log_dir:
         ensure => absent,
